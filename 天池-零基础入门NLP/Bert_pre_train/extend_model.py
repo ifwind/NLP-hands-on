@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
     from transformers import Trainer, TrainingArguments
 
-    model_checkpoint = "./extend-test-glue" #所选择的预训练模型
+    model_checkpoint = "./pre-train2" #所选择的预训练模型
     num_labels = 14
     model=Model.from_pretrained(model_checkpoint, num_labels=num_labels)
 
@@ -157,7 +157,7 @@ if __name__ == '__main__':
     metric_name = "f1"
 
     args = TrainingArguments(
-        "extend-test-glue",
+        "extend-XLNet",
         evaluation_strategy = "epoch", #每个epcoh会做一次验证评估；
         # eval_steps =10,
         save_strategy = "epoch",
@@ -184,7 +184,7 @@ if __name__ == '__main__':
     )
     #
     # trainer.train()
-    trainer.save_model("./extend-test-glue")
+    trainer.save_model("./extend-XLNet")
     trainer.evaluate(encoded_dataset["test"])
     # import pandas as pd
     # final_test_dataset = load_dataset('csv', data_files={'train':'final_test_data.csv'},cache_dir='D:\\NLP\\Bert_pre_train\\fine-tune\\')
